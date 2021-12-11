@@ -12,7 +12,8 @@ Uygulamayı kullanabilmek için aşağıdaki kütphaneleri pip ile kurun.
 ```console
 $ pip install selenium
 ```
-Selenium kütüphanesi tarayıcıyı otomatik olarak kullanmaya yarar.
+Selenium kütüphanesi tarayıcıyı otomatik olarak kullanmaya yarar. Tarayıcıyı selenium ile kullanabilmek için
+Chorme sürümünüzle uyumlu olan [Driverı](https://sites.google.com/chromium.org/driver/) indirmelisiniz.
 
 ```console
 $ pip install xlrd

@@ -162,4 +162,3 @@ class Browser:
             self.browser.close()
         except:
             pass
-

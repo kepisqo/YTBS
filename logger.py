@@ -5,7 +5,6 @@ import time
 import logging
 from variable import logPath
 
-
 class BaseLogger:
     def __init__(self):
         pass

@@ -83,4 +83,3 @@ class Excel:
             print(4)
         except:
             self.loggerService.log("Dosyaya anlık endex verisini kaydederken hata oluştu.")
-

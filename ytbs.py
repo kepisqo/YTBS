@@ -62,7 +62,7 @@ def veriGirisEkraniVeriGirme(counter):
             browser.loginBrowser()
             req = browser.veriGirisIslemleri()
             if(req):
-                browser.veriUpload(listExcel)
+                browser.veriUpload(excel.dataList)
             else:
                 veriGirisEkraniVeriGirme(counter)
         except:

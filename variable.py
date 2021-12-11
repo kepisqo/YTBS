@@ -9,8 +9,8 @@ excelFilePath = dir_path + '/saat/'
 browserAdress = "https://ytbs.teias.gov.tr/ytbs/frm_login.jsf"
 
 # Kullanıcı adı ve şifre
-username = "kullanici adi"
-password = "Password"
+username = "omerziya.keskin"
+password = "Nursan321"
 
 #Tarayıcıda kullanılacak olan blokların adresleri
 browserKullaniciAdi = "//*[@id='loginForm:username']"

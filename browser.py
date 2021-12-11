@@ -55,7 +55,7 @@ class Browser:
     # Alınan değerler ytbs veri giriş ekranında uygun yerlere yazılıyor.
     def veriUpload(self, excelList):
         try:
-            self.browserXPath()
+            #self.browserXPath()
             time.sleep(2)
 
             d1 = str(excelList[0]).split(".") # kV

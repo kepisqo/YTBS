@@ -42,6 +42,7 @@ class Browser:
             nextTime = self.browser.find_element_by_xpath(browserNextHour).text
             if nextTime == "24:00":
                 nextTime = "23:59"
+            nextTime = "21:47"
             self.dateTimeObj = datetime.datetime.strptime(nextTime, '%H:%M')
             self.loggerService.log("Saat Bilgisi alindi: " + nextTime)
             return True
@@ -55,9 +56,11 @@ class Browser:
     # Alınan değerler ytbs veri giriş ekranında uygun yerlere yazılıyor.
     def veriUpload(self, excelList):
         try:
-            #self.browserXPath()
+            print("Uploading")
+            self.browserXPath()
             time.sleep(2)
-
+            print(1)
+            
             d1 = str(excelList[0]).split(".") # kV
             d2 = str(excelList[1]).split(".") # MVAr Payas
             d3 = str(excelList[2]).split(".") # MW   Payas
@@ -67,7 +70,9 @@ class Browser:
             d7 = str(excelList[6]).split(".") # MVAr TR-B
             d8 = str(excelList[7]).split(".") # MW   TR-B
             # d9 = 17 kademe sabit
-
+            print(2)
+            print(d1[0])
+            print(d1[0]+","+d1[1])
             self.v1.send_keys(d1[0]+","+d1[1])
             time.sleep(0.1)
             self.v2.send_keys(d2[0]+","+d2[1])
@@ -85,10 +90,11 @@ class Browser:
             self.v8.send_keys(d8[0]+","+d8[1])
             time.sleep(0.1)
             self.v9.send_keys("17")
-            time.sleep(5)
-
+            time.sleep(2)
+            print(3)
             self.browser.find_element_by_xpath(browserVeriEkle).click()
             self.loggerService.log("*** Saat verisi girildi. ***")
+            time.sleep(10)
             self.browserClose()
         except:
             try:
@@ -107,6 +113,7 @@ class Browser:
                 self.loggerService.log("Puant saati girildi.")
                 self.browserClose()
             except:
+                self.browserClose()
                 self.loggerService.log("Bilinmeyen bir hata olustu. Veri girilemedi. Tekrar Deneniyor...")
                 time.sleep(5)
 
@@ -127,9 +134,10 @@ class Browser:
             self.v8.send_keys(excelList[7])
             self.v9.send_keys("17")
 
-            time.sleep(5)
+            time.sleep(2)
             self.browser.find_element_by_xpath(browserVeriEkle).click()
             self.logger.error("*** Gecmis Saat verisi girildi. ***")
+            time.sleep(10)
             self.browserClose()
         except:
             try:

@@ -55,20 +55,14 @@ class Excel:
     def save(self, dateTimeObj):
         # Anlık olarak okunan endexler o saat adıyla excel dosyası olarak kaydediliyor.
         try:
-            print(0)
-            self.data = xlrd.open_workbook(excelPath)
-            self.ws = self.data.sheet_by_index(0)
-            print(excelPath)
-            print(dateTimeObj)
-            print(1)
-            d1 = str(self.ws.cell_value(rowx=2, colx=0)).split(".")
-            d2 = str(self.ws.cell_value(rowx=2, colx=1)).split(".")
-            d3 = str(self.ws.cell_value(rowx=2, colx=2)).split(".")
-            d4 = str(self.ws.cell_value(rowx=2, colx=3)).split(".")
-            d5 = str(self.ws.cell_value(rowx=2, colx=4)).split(".")
-            d7 = str(self.ws.cell_value(rowx=2, colx=6)).split(".")
-            d8 = str(self.ws.cell_value(rowx=2, colx=7)).split(".")
-            print(2)
+            d1 = str(self.dataList[0]).split(".")
+            d2 = str(self.dataList[1]).split(".")
+            d3 = str(self.dataList[2]).split(".")
+            d4 = str(self.dataList[3]).split(".")
+            d5 = str(self.dataList[4]).split(".")
+            d7 = str(self.dataList[6]).split(".")
+            d8 = str(self.dataList[7]).split(".")
+            
             self.worksheet.write(2, 0, d1[0]+","+d1[1])
             self.worksheet.write(2, 1, d2[0]+","+d2[1])
             self.worksheet.write(2, 2, d3[0]+","+d3[1])
@@ -78,8 +72,8 @@ class Excel:
             self.worksheet.write(2, 6, d7[0]+","+d7[1])
             self.worksheet.write(2, 7, d8[0]+","+d8[1])
             self.worksheet.write(2, 8, "17")
-            print("3:")
+            
             self.workbook.save(excelFilePath + dateTimeObj + ".xls")
-            print(4)
+            
         except:
             self.loggerService.log("Dosyaya anlık endex verisini kaydederken hata oluştu.")

@@ -42,7 +42,6 @@ class Browser:
             nextTime = self.browser.find_element_by_xpath(browserNextHour).text
             if nextTime == "24:00":
                 nextTime = "23:59"
-            nextTime = "08:47"
             self.dateTimeObj = datetime.datetime.strptime(nextTime, '%H:%M')
             self.loggerService.log("Saat Bilgisi alindi: " + nextTime)
             return True

@@ -1,3 +1,4 @@
+#encoding:utf-8
 # Programda kullanılan değişkenler burada tutuluyor.
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -30,7 +31,7 @@ browserV9 = "/html/body/div[1]/div[4]/div/div/div/div/form/div/table/tbody/tr[4]
 browserVeriEkle = "//*[@id='veriGirisForm:dtVeriGiris:ekle']"
 
 browserDialogClose = "//*[@id='diyalog']/div[1]/a"
-browserVeriGirisEkranı = "/html/body/div[1]/div[4]/div/div/form/div/div[2]/div[2]/div[3]/button"
+browserVeriGirisEkrani = "/html/body/div[1]/div[4]/div/div/form/div/div[2]/div[2]/div[3]/button"
 
 browserNextHour = "/html/body/div[1]/div[4]/div/div/div/div/form/div/table/tbody/tr[4]/td/div/div/table/thead/tr[3]/th[2]/span/div/label"
 

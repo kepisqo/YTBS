@@ -1,3 +1,4 @@
+#encoding:utf-8
 # Yapılan işlemleri loglamak için kullanılıyor.
 # Log kayıtları hata analizi için kullanıyor.
 

@@ -1,3 +1,4 @@
+#encoding:utf-8
 import time
 import datetime
 from selenium import webdriver
@@ -28,7 +29,7 @@ class Browser:
                 self.browser.find_element_by_xpath(browserDialogClose).click()
             except:
                 self.loggerService.log("Diyalog penceresi bulunamadi")
-            self.browser.find_element_by_xpath(browserVeriGirisEkranı).click()
+            self.browser.find_element_by_xpath(browserVeriGirisEkrani).click()
             time.sleep(0.5)
             return True
         except:

@@ -1,3 +1,4 @@
+#encoding:utf-8
 import xlrd
 import xlwt
 from variable import excelPath, excelFilePath

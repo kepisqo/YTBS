@@ -42,7 +42,7 @@ class Browser:
             nextTime = self.browser.find_element_by_xpath(browserNextHour).text
             if nextTime == "24:00":
                 nextTime = "23:59"
-            nextTime = "21:47"
+            nextTime = "08:47"
             self.dateTimeObj = datetime.datetime.strptime(nextTime, '%H:%M')
             self.loggerService.log("Saat Bilgisi alindi: " + nextTime)
             return True
@@ -136,7 +136,7 @@ class Browser:
 
             time.sleep(2)
             self.browser.find_element_by_xpath(browserVeriEkle).click()
-            self.logger.error("*** Gecmis Saat verisi girildi. ***")
+            self.loggerService.log("*** Gecmis Saat verisi girildi. ***")
             time.sleep(10)
             self.browserClose()
         except:
@@ -149,6 +149,7 @@ class Browser:
                 self.browser.find_element_by_xpath(browserVeriEkle).click()
                 self.browserClose()
             except:
+                self.browserClose()
                 self.loggerService.log("Bilinmeyen bir hata olustu. Geçmiş saat Verisi girilemedi.")
                 time.sleep(5)
 

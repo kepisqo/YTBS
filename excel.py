@@ -14,21 +14,20 @@ class Excel:
         self.ws = self.data.sheet_by_index(0)
         self.workbook = xlwt.Workbook()
         self.worksheet = self.workbook.add_sheet('Sayfa1')
-        self.dataList = []
+        self.dataList = {"kV":"", "payas_MVar":"", "payas_MW":"", "tr1_MVar":"", "tr1_MW":"", "tr2_MVar":"", "tr2_MW":""}
 
     def read(self):
         # Excelden anlık endexler okunuyor.
         try:
-            self.dataList.clear()
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=0)) # kV
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=1)) # MVAr Payas
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=2)) # MW   Payas
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=3)) # MVAr TR-A
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=4)) # MW   TR-A
-            self.dataList.append(17)
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=6)) # MVAr TR-B
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=7)) # MW   TR-B
-            self.dataList.append(17)
+            self.dataList["kV"]         = self.ws.cell_value(rowx=2, colx=0) # kV
+            self.dataList["payas_MVar"] = self.ws.cell_value(rowx=2, colx=1) # MVAr Payas
+            self.dataList["payas_MW"]   = self.ws.cell_value(rowx=2, colx=2) # MW   Payas
+            self.dataList["tr1_MVar"]   = self.ws.cell_value(rowx=2, colx=3) # MVAr TR-A
+            self.dataList["tr1_MW"]     = self.ws.cell_value(rowx=2, colx=4) # MW   TR-A
+            #(17)
+            self.dataList["tr2_MVar"]   = self.ws.cell_value(rowx=2, colx=6) # MVAr TR-B
+            self.dataList["tr2_MW"]     = self.ws.cell_value(rowx=2, colx=7) # MW   TR-B
+            #(17)
             return self.dataList
         except:
             self.loggerService.log("Excel anlık veri okumada hata oluştu.")
@@ -36,19 +35,17 @@ class Excel:
     def readFile(self, dateTimeObj):
         # Geçmiş saat için belirtilen excel dosyasından o saatin endex verileri okunuyor.
         try:
-            self.dataList.clear()
             self.data = xlrd.open_workbook(excelFilePath + dateTimeObj + ".xls")
             self.ws = self.data.sheet_by_index(0)
 
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=0)) # kV
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=1)) # MVAr Payas
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=2)) # MW   Payas
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=3)) # MVAr TR-A
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=4)) # MW   TR-A
-            self.dataList.append(17)
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=6)) # MVAr TR-B
-            self.dataList.append(self.ws.cell_value(rowx=2, colx=7)) # MW   TR-B
-            self.dataList.append(17)
+            self.dataList["kV"]         = self.ws.cell_value(rowx=2, colx=0) # kV
+            self.dataList["payas_MVar"] = self.ws.cell_value(rowx=2, colx=1) # MVAr Payas
+            self.dataList["payas_MW"]   = self.ws.cell_value(rowx=2, colx=2) # MW   Payas
+            self.dataList["tr1_MVar"]   = self.ws.cell_value(rowx=2, colx=3) # MVAr TR-A
+            self.dataList["tr1_MW"]     = self.ws.cell_value(rowx=2, colx=4) # MW   TR-A
+            #(17)
+            self.dataList["tr2_MVar"]   = self.ws.cell_value(rowx=2, colx=6) # MVAr TR-B
+            self.dataList["tr2_MW"]     = self.ws.cell_value(rowx=2, colx=7) # MW   TR-B
             return self.dataList
         except:
             self.loggerService.log("Excel dosyadan geçmiş saat verisini okumada hata oluştu.")
@@ -56,13 +53,13 @@ class Excel:
     def save(self, dateTimeObj):
         # Anlık olarak okunan endexler o saat adıyla excel dosyası olarak kaydediliyor.
         try:
-            d1 = str(self.dataList[0]).split(".")
-            d2 = str(self.dataList[1]).split(".")
-            d3 = str(self.dataList[2]).split(".")
-            d4 = str(self.dataList[3]).split(".")
-            d5 = str(self.dataList[4]).split(".")
-            d7 = str(self.dataList[6]).split(".")
-            d8 = str(self.dataList[7]).split(".")
+            d1 = str(self.dataList["kV"]).split(".")
+            d2 = str(self.dataList["payas_MVar"]).split(".")
+            d3 = str(self.dataList["payas_MW"]).split(".")
+            d4 = str(self.dataList["tr1_MVar"]).split(".")
+            d5 = str(self.dataList["tr1_MW"]).split(".")
+            d7 = str(self.dataList["tr2_MVar"]).split(".")
+            d8 = str(self.dataList["tr2_MW"]).split(".")
             
             self.worksheet.write(2, 0, d1[0]+","+d1[1])
             self.worksheet.write(2, 1, d2[0]+","+d2[1])

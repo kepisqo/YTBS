@@ -56,19 +56,18 @@ class Browser:
     # Alınan değerler ytbs veri giriş ekranında uygun yerlere yazılıyor.
     def veriUpload(self, excelList):
         try:
-            print("Uploading")
             self.browserXPath()
             time.sleep(2)
             print(1)
             
-            d1 = str(excelList[0]).split(".") # kV
-            d2 = str(excelList[1]).split(".") # MVAr Payas
-            d3 = str(excelList[2]).split(".") # MW   Payas
-            d4 = str(excelList[3]).split(".") # MVAr TR-A
-            d5 = str(excelList[4]).split(".") # MW   TR-A
+            d1 = str(excelList["kV"]).split(".") # kV
+            d2 = str(excelList["payas_MVar"]).split(".") # MVAr Payas
+            d3 = str(excelList["payas_MW"]).split(".") # MW   Payas
+            d4 = str(excelList["tr1_MVar"]).split(".") # MVAr TR-A
+            d5 = str(excelList["tr1_MW"]).split(".") # MW   TR-A
             # d6 = 17 kademe sabit
-            d7 = str(excelList[6]).split(".") # MVAr TR-B
-            d8 = str(excelList[7]).split(".") # MW   TR-B
+            d7 = str(excelList["tr2_MVar"]).split(".") # MVAr TR-B
+            d8 = str(excelList["tr2_MW"]).split(".") # MW   TR-B
             # d9 = 17 kademe sabit
             print(2)
             print(d1[0])
@@ -98,9 +97,9 @@ class Browser:
             self.browserClose()
         except:
             try:
-                d3 = str(excelList[2]).split(".") # MW   Payas
-                d5 = str(excelList[4]).split(".") # MW   TR-A
-                d8 = str(excelList[7]).split(".") # MW   TR-B
+                d3 = str(excelList["payas_MW"]).split(".") # MW   Payas
+                d5 = str(excelList["tr1_MW"]).split(".") # MW   TR-A
+                d8 = str(excelList["tr2_MW"]).split(".") # MW   TR-B
 
                 self.v3.send_keys(d3[0]+","+d3[1])
                 time.sleep(0.1)
@@ -123,17 +122,17 @@ class Browser:
         try:
             self.browserXPath()
             time.sleep(2)
-
-            self.v1.send_keys(excelList[0])
-            self.v2.send_keys(excelList[1])
-            self.v3.send_keys(excelList[2])
-            self.v4.send_keys(excelList[3])
-            self.v5.send_keys(excelList[4])
+            print(excelList)
+            
+            self.v1.send_keys(excelList["kV"])
+            self.v2.send_keys(excelList["payas_MVar"])
+            self.v3.send_keys(excelList["payas_MW"])
+            self.v4.send_keys(excelList["tr1_MVar"])
+            self.v5.send_keys(excelList["tr1_MW"])
             self.v6.send_keys("17")
-            self.v7.send_keys(excelList[6])
-            self.v8.send_keys(excelList[7])
+            self.v7.send_keys(excelList["tr2_MVar"])
+            self.v8.send_keys(excelList["tr2_MW"])
             self.v9.send_keys("17")
-
             time.sleep(2)
             self.browser.find_element_by_xpath(browserVeriEkle).click()
             self.loggerService.log("*** Gecmis Saat verisi girildi. ***")

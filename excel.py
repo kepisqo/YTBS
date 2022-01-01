@@ -1,8 +1,8 @@
 #encoding:utf-8
-import xlrd
-import xlwt
+import xlrd # Excelden veri okuma kütüphanesi
+import xlwt # Excele veri yazma kütüphanesi
 from variable import excelPath, excelFilePath
-import logger
+import logger # Logger.py clası enntegre ediliyor.
 
 loggerText = logger.TextLoging()
 
@@ -46,6 +46,7 @@ class Excel:
             #(17)
             self.dataList["tr2_MVar"]   = self.ws.cell_value(rowx=2, colx=6) # MVAr TR-B
             self.dataList["tr2_MW"]     = self.ws.cell_value(rowx=2, colx=7) # MW   TR-B
+            #(17)
             return self.dataList
         except:
             self.loggerService.log("Excel dosyadan geçmiş saat verisini okumada hata oluştu.")
@@ -53,6 +54,12 @@ class Excel:
     def save(self, dateTimeObj):
         # Anlık olarak okunan endexler o saat adıyla excel dosyası olarak kaydediliyor.
         try:
+            self.data = xlrd.open_workbook(excelPath)
+            self.ws = self.data.sheet_by_index(0)
+            self.ws = self.data.sheet_by_index(0)
+            self.workbook = xlwt.Workbook()
+            self.worksheet = self.workbook.add_sheet('Sayfa1')
+
             d1 = str(self.dataList["kV"]).split(".")
             d2 = str(self.dataList["payas_MVar"]).split(".")
             d3 = str(self.dataList["payas_MW"]).split(".")

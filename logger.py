@@ -3,7 +3,7 @@
 # Log kayıtları hata analizi için kullanıyor.
 
 import time
-import logging
+import logging # Loglama kütüphanesi
 from variable import logPath
 
 class BaseLogger:
@@ -17,7 +17,6 @@ class TextLoging(BaseLogger):
         self.logger.setLevel(logging.INFO)
         handler = logging.FileHandler(logPath)
         self.logger.addHandler(handler)
-        self.consoleLogging = ConsoleLoging()
 
     def log(self, log):
         self.logger.error(time.strftime('%Y-%m-%d %H:%M') + " " + log)
